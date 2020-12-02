@@ -1,0 +1,27 @@
+<div class="loading-shade" *ngIf="loading">
+  <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+</div>
+<div *ngIf="entities.length>0 else noEntities">
+  <div class="cloudapp-actions">
+    <button mat-flat-button type="button" color="primary" [disabled]="ids.size==0 || !selectedProfile" (click)="print()">{{ 'Print' | translate:{num: ids.size} }}</button>
+  </div>
+  <p translate>Select</p>
+  <app-select-entities #selectEntities 
+    (entitySelected)="onEntitySelected($event)"
+    [entityList]="entities"
+    [selectedEntities]="ids">
+  </app-select-entities>
+  <div>
+    <p translate>SelectProfile</p>
+    <mat-select [(value)]="selectedProfile" (selectionChange)="onProfileSelected($event)">
+      <mat-option *ngFor="let profile of profileKeys" [value]="profile">
+        {{startCase(profile)}}
+      </mat-option>
+    </mat-select>
+  </div>
+
+</div>
+<ng-template #noEntities>
+  <p translate>NoEntities</p>
+</ng-template>
+<iframe style="visibility: hidden;" #iframe></iframe>

@@ -1,0 +1,9 @@
+.profile-list {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.profile-list.pull-right {
+  margin-left: auto;
+}

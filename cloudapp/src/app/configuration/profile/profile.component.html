@@ -1,0 +1,75 @@
+<div *ngIf="form" [formGroup]="form">
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab [label]="'Configuration.General' | translate">
+      <mat-checkbox labelPosition="before" formControlName="two_columns">{{'Configuration.Profile.TwoColumns' | translate}}</mat-checkbox>
+      <mat-checkbox labelPosition="before" formControlName="display_authors">{{'Configuration.Profile.ShowAuthors' | translate}}</mat-checkbox>
+      <p>&nbsp;</p><!-- fix mat-tab scroll-->
+    </mat-tab>
+    <mat-tab [label]="'Configuration.Appearance' | translate" formGroupName="styles">
+      <mat-form-field>
+        <mat-label translate>Configuration.Profile.body</mat-label>
+        <input matInput formControlName="body">
+      </mat-form-field>  
+      <mat-form-field>
+        <mat-label translate>Configuration.Profile.table</mat-label>
+        <input matInput formControlName="table">
+      </mat-form-field>  
+      <mat-form-field>
+        <mat-label translate>Configuration.Profile.institution_logo</mat-label>
+        <input matInput formControlName="institution_logo">
+      </mat-form-field>  
+      <mat-form-field>
+        <mat-label translate>Configuration.Profile.institution</mat-label>
+        <input matInput formControlName="institution">
+      </mat-form-field>  
+      <mat-form-field>
+        <mat-label translate>Configuration.Profile.library</mat-label>
+        <input matInput formControlName="library">
+      </mat-form-field>  
+      <mat-form-field>
+        <mat-label translate>Configuration.Profile.title</mat-label>
+        <input matInput formControlName="title">
+      </mat-form-field>  
+      <mat-form-field>
+        <mat-label translate>Configuration.Profile.user</mat-label>
+        <input matInput formControlName="user">
+      </mat-form-field>  
+      <mat-form-field>
+        <mat-label translate>Configuration.Profile.loans</mat-label>
+        <input matInput formControlName="loans">
+      </mat-form-field>  
+      <mat-form-field>
+        <mat-label translate>Configuration.Profile.signature</mat-label>
+        <input matInput formControlName="signature">
+      </mat-form-field>  
+    </mat-tab>
+    <mat-tab [label]="'Configuration.Labels' | translate" formGroupName="labels">
+      <mat-form-field>
+        <mat-label translate>Configuration.Profile.slip_title</mat-label>
+        <input matInput formControlName="slip_title">
+      </mat-form-field>  
+      <mat-form-field>
+        <mat-label translate>Configuration.Profile.institution_name</mat-label>
+        <input matInput formControlName="institution_name">
+      </mat-form-field>   
+      <mat-form-field>
+        <mat-label translate>Configuration.Profile.signature</mat-label>
+        <input matInput formControlName="signature">
+      </mat-form-field>  
+      <mat-form-field>
+        <mat-label translate>Configuration.Profile.date_text</mat-label>
+        <input matInput formControlName="date_text">
+      </mat-form-field>                          
+    </mat-tab>
+    <mat-tab [label]="'Configuration.Logo' | translate">
+      <div><img src="{{logoUrl}}" style="max-width: 100%;"/></div>
+      <input type="file" id="files" class="hidden" (change)="fileChangeEvent($event.target.files)" accept="image/*" style="display: none;"/>
+      <label for="files" class="mat-flat-button mat-button-base mat-secondary" translate>Configuration.ChooseImage</label>
+    </mat-tab>    
+    <mat-tab [label]="'Configuration.Order' | translate">
+      <div cdkDropList class="order-list" (cdkDropListDropped)="drop($event)">
+        <div class="order-box" *ngFor="let field of form.controls.order.value" cdkDrag>{{'Configuration.Headers.'+field | translate}}<mat-icon>drag_indicator</mat-icon> </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

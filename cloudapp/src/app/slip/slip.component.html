@@ -1,0 +1,48 @@
+<div [style]="styles('body')" *ngIf="loans && profile && user">
+  <ng-container #viewContainer></ng-container>
+</div>
+
+<ng-template #institutionTmpl>
+  <div [style]="styles('institution')">{{profile.labels.institution_name}}</div>
+</ng-template>
+<ng-template #libraryTmpl>
+  <div [style]="styles('library_name')">{{library}}</div>
+</ng-template>
+<ng-template #titleTmpl>
+  <div [style]="styles('title')">{{profile.labels.slip_title}}</div>
+</ng-template>
+<ng-template #userTmpl>
+  <div [style]="styles('user')">{{user.full_name}}</div>
+</ng-template>
+<ng-template #loansTmpl>
+  <div [style]="styles('loans')" [ngSwitch]="profile.two_columns">
+    <table [style]="styles('table')" *ngSwitchCase="false">
+      <tr>
+        <th *ngFor="let field of loanFields" [style]="styles('table')">{{'Slip.'+field | translate}}</th>
+      </tr>
+      <tr *ngFor="let loan of loans">
+        <td *ngFor="let field of loanFields" [style]="styles('table')" [ngSwitch]="field.indexOf('_date')>-1">
+          <span *ngSwitchCase="true">{{loan[field] | date}}</span>
+          <span *ngSwitchDefault>{{loan[field]}}</span>
+        </td>
+      </tr>
+    </table>
+    <div *ngSwitchCase="true">
+      <table [style]="styles('table')" *ngFor="let loan of loans">
+        <tr *ngFor="let field of loanFields">
+          <th [style]="styles('table')">{{'Slip.'+field | translate}}</th>
+          <td [style]="styles('table')" [ngSwitch]="field.indexOf('_date')>-1">
+            <span *ngSwitchCase="true">{{loan[field] | date}}</span>
+            <span *ngSwitchDefault>{{loan[field]}}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</ng-template>
+<ng-template #logoTmpl>
+  <div *ngIf="profile.institution_logo" [style]="styles('institution_logo')"><img src="{{profile.institution_logo}}"></div>
+</ng-template>
+<ng-template #signatureTmpl>
+  <div [style]="styles('signature')">{{profile.labels.signature}}</div>
+</ng-template>

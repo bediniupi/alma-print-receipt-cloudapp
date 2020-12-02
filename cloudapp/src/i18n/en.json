@@ -1,0 +1,60 @@
+{
+  "SelectAll": "Check/Uncheck All",
+  "Select": "Select the desired items:",
+  "NoEntities": "Please navigate to a list of loans.",
+  "Print": "Print slip",
+  "SelectProfile": "Select a print slip profile",
+  "Configuration": {
+    "Title": "Configuration",
+    "Profiles": "Profiles",
+    "SelectProfile": "Select a profile to configure below:",
+    "Success": "Configuration successfully saved",
+    "ProfileName": "Profile Name",
+    "ProfileExists": "Profile \"{name}\" already exists.",
+    "RenameProfile": "Rename profile",
+    "ConfirmDeleteProfile": "Are you sure you want to delete profile \"{name}\"",
+    "General": "General",
+    "Appearance": "Appearance",
+    "Labels": "Labels",
+    "Order": "Order",
+    "Logo": "Logo",
+    "ChooseImage": "Select an image file",
+    "Profile": {
+      "ShowAuthors": "Show authors",
+      "TwoColumns": "Two columns",
+      "body": "Body",
+      "table": "Table",
+      "institution_logo": "Institution Logo",
+      "institution": "Institution",
+      "library": "Library",
+      "title": "Title",
+      "user": "User",
+      "loans": "Loans",
+      "signature": "Signature",
+      "slip_title": "Slip title",
+      "institution_name": "Institution name",
+      "date_format": "Date format",
+      "date_text": "Date text"
+    },
+    "Headers": {
+      "logo": "Institution Logo", 
+      "inst_name": "Institution name", 
+      "library_name": "Library name", 
+      "title": "Slip title",
+      "patron": "Patron name, id", 
+      "loan_list": "Loan list", 
+      "signature": "Signature"
+
+    }
+  },
+  "Slip": {
+    "item_barcode": "Barcode",
+    "title": "Title",
+    "author": "Author",
+    "loan_date": "Loan Date",
+    "due_date": "Due Date",
+    "call_number": "Call Number"
+  },
+  "Back": "Back",
+  "Save": "Save"
+}

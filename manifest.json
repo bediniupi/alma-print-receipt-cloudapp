@@ -1,0 +1,24 @@
+{
+   "id": "bediniupi/print-slip",
+   "title": "Print Slip",
+   "description": "",
+   "subtitle": "Format and print slips from patron workbench",
+   "author": "Nazzareno Bedini",
+   "entities": [
+      "LOAN",
+      "REQUEST"
+   ],
+   "pages": {
+      "config": "/#/configuration"
+   },
+   "contentSecurity": {
+      "sandbox": {
+         "popups": true,
+         "modals": true
+      }
+   },
+   "icon": {
+      "type": "font",
+      "value": "fa fa-file-text-o"
+   }
+}
