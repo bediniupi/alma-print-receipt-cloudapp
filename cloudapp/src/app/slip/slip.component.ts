@@ -11,7 +11,6 @@ import { ConfigService } from '../../services/config.service';
 @Component({
   selector: 'app-slip',
   templateUrl: './slip.component.html',
-  styleUrls: ['./slip.component.css']
 })
 export class SlipComponent implements OnInit {
   @Input() profileName: string;

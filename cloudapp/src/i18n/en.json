@@ -13,6 +13,7 @@
     "ProfileExists": "Profile \"{name}\" already exists.",
     "RenameProfile": "Rename profile",
     "ConfirmDeleteProfile": "Are you sure you want to delete profile \"{name}\"",
+    "Discard": "Discard changes?",
     "General": "General",
     "Appearance": "Appearance",
     "Labels": "Labels",

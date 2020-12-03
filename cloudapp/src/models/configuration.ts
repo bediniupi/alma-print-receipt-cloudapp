@@ -45,7 +45,7 @@ export const defaultProfile: Profile = {
   },
   styles: {
     body: "font-family: Arial, Helvetica, sans-serif;",
-    table: "border:1px solid black; border-collapse: collapse;",
+    table: "border:1px solid black; border-collapse: collapse; padding: 5px; margin-bottom: 10px;",
     institution_logo: "width:100px;",
     institution: "font-size: medium;",
     library: "font-size: medium;",

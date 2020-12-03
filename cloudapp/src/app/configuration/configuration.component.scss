@@ -3,7 +3,18 @@
   align-items: center;
   margin-bottom: 15px;
 }
-
-.profile-list.pull-right {
-  margin-left: auto;
+.mat-form-field {
+  width: 100%;
+}
+/* Until SDK 0.3.1 */
+i.eca-button {
+  cursor: pointer;
+  padding: 7px;
+  border-radius: 50%;
+  &:hover {
+    background-color: #E5E5E5;
+  }
+  &:first-of-type {
+    margin-left: auto;
+  }
 }

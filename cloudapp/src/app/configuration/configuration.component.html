@@ -1,7 +1,6 @@
 <div class="cloudapp-actions">
   <button mat-flat-button color="secondary" [routerLink]="['/']">
-    <mat-icon>arrow_back</mat-icon>
-    {{ 'Back' | translate}}
+    <mat-icon>arrow_back_ios</mat-icon> {{ 'Back' | translate}}
   </button>
   <button mat-flat-button type="button" color="primary" (click)="save()">{{ 'Save' | translate}}</button>
 </div>
@@ -11,22 +10,18 @@
 </div>
 <form *ngIf="form" [formGroup]="form">
   <h2 translate>Configuration.Profiles</h2>
-  <p translate>Configuration.SelectProfile</p>
   <div class="profile-list">
-    <mat-select placeholder="Profile" [(value)]="selectedProfile">
-      <mat-option *ngFor="let profile of profileKeys" [value]="profile">
-        {{startCase(profile)}}
-      </mat-option>
-    </mat-select>
-    <button type="button" class="pull-right" (click)="addProfile()" mat-icon-button aria-label="Add profile" title="Add profile">
-        <mat-icon>add_circle</mat-icon>
-    </button>
-    <button type="button" (click)="renameProfile()" mat-icon-button aria-label="Rename profile" title="Rename profile">
-        <mat-icon>edit</mat-icon>
-    </button>    
-    <button type="button" (click)="deleteProfile()" mat-icon-button aria-label="Delete profile" title="Delete profile">
-        <mat-icon>delete_outline</mat-icon>
-    </button>
+    <mat-form-field>
+      <mat-label translate>Configuration.SelectProfile</mat-label>
+      <mat-select placeholder="Profile" [(value)]="selectedProfile">
+        <mat-option *ngFor="let profile of profileKeys" [value]="profile">
+          {{startCase(profile)}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <i class="uxf-icon uxf-plus eca-button" (click)="addProfile()" aria-label="Add profile" title="Add profile"></i>
+    <i class="uxf-icon uxf-pencil eca-button" (click)="renameProfile()" aria-label="Rename profile" title="Rename profile"></i>
+    <i class="uxf-icon uxf-trash eca-button" (click)="deleteProfile()" aria-label="Delete profile" title="Delete profile"></i>
   </div>
   <app-config-profile [form]="profiles.get(selectedProfile)"></app-config-profile>
 </form>

@@ -12,12 +12,14 @@
     [selectedEntities]="ids">
   </app-select-entities>
   <div>
-    <p translate>SelectProfile</p>
-    <mat-select [(value)]="selectedProfile" (selectionChange)="onProfileSelected($event)">
-      <mat-option *ngFor="let profile of profileKeys" [value]="profile">
-        {{startCase(profile)}}
-      </mat-option>
-    </mat-select>
+    <mat-form-field>
+      <mat-label translate>SelectProfile</mat-label>
+      <mat-select [(value)]="selectedProfile" (selectionChange)="onProfileSelected($event)">
+        <mat-option *ngFor="let profile of profileKeys" [value]="profile">
+          {{startCase(profile)}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 
 </div>

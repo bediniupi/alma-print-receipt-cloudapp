@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AlertService } from '@exlibris/exl-cloudapp-angular-lib';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfigService } from '../../services/config.service';
 import { snakeCase, startCase } from 'lodash';
 import { configFormGroup, profileFormGroup } from '../../models/configuration';
+import { CanDeactivate } from '@angular/router';
 
 @Component({
   selector: 'app-configuration',
@@ -37,7 +38,6 @@ export class ConfigurationComponent implements OnInit {
   save() {
     this.saving = true;
     let val = this.form.value;
-    console.log('form', val);
     this.configService.set(val).subscribe(
       () => {
         this.alert.success(this.translate.instant('Configuration.Success'));
@@ -58,7 +58,7 @@ export class ConfigurationComponent implements OnInit {
 
   addProfile() {
     let name = snakeCase(prompt(this.translate.instant('Configuration.ProfileName')));
-    if (name != null) {
+    if (!!name) {
       if (this.profileKeys.includes(name)) {
         return alert(this.translate.instant('Configuration.ProfileExists',{name: name}));
       } else {
@@ -70,7 +70,7 @@ export class ConfigurationComponent implements OnInit {
   }
 
   deleteProfile() {
-    if (confirm(this.translate.instant('Configuration.ConfirmDeleteProfile', {name: this.selectedProfile}))) {
+    if (confirm(this.translate.instant('Configuration.ConfirmDeleteProfile', {name: startCase(this.selectedProfile)}))) {
       this.profiles.removeControl(this.selectedProfile);
       this.selectedProfile = this.profileKeys[0];
       this.form.markAsDirty();
@@ -78,8 +78,8 @@ export class ConfigurationComponent implements OnInit {
   }
 
   renameProfile() {
-    let name = snakeCase(prompt(this.translate.instant('Settings.RenameProfile'), this.selectedProfile));
-    if (name != null) {
+    let name = snakeCase(prompt(this.translate.instant('Settings.RenameProfile'), startCase(this.selectedProfile)));
+    if (!!name) {
       if (this.profileKeys.includes(name)) {
         return alert(this.translate.instant('Configuration.ProfileExists',{name: name}));
       } else {
@@ -90,5 +90,20 @@ export class ConfigurationComponent implements OnInit {
       }
     }
   }
+}
 
+@Injectable({
+  providedIn: 'root',
+})
+export class ConfigurationGuard implements CanDeactivate<ConfigurationComponent> {
+  constructor(
+    private translate: TranslateService
+  ) {}
+
+  canDeactivate(component: ConfigurationComponent): boolean {
+    if(component.form.dirty) {
+      return confirm(this.translate.instant('Configuration.Discard'));
+    }
+    return true;
+  }
 }
