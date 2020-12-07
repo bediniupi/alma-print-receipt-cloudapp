@@ -1,8 +1,8 @@
 {
-   "id": "bediniupi/print-slip",
-   "title": "Print Slip",
+   "id": "bediniupi/alma-print-receipt-cloudapp",
+   "title": "Print Receipt",
    "description": "",
-   "subtitle": "Format and print slips from patron workbench",
+   "subtitle": "Format and print receipts from patron workbench",
    "author": "Nazzareno Bedini",
    "entities": [
       "LOAN",
